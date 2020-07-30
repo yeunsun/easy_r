@@ -15,6 +15,7 @@ library(readxl)              # 엑셀 파일 불러오기
 ```
 
 ```{r, warning=F,include=F}
+
 # 데이터 불러오기
 raw_welfare <- read.spss(file = "Koweps_hpc10_2015_beta1.sav",
                          to.data.frame=T)
@@ -22,6 +23,7 @@ raw_welfare <- read.spss(file = "Koweps_hpc10_2015_beta1.sav",
 # 복사본 만들기
 welfare <- raw_welfare
 ```
+
 
 ```{R, eval=T,include=F}
 welfare <- rename(welfare,
@@ -47,7 +49,7 @@ welfare <- rename(welfare,
 #### 1. 변수 검토하기
 성별 변수의 타입을 파악하고, 각 범주에 몇 명이 있는지 확인
 
-```{r,eval=F}
+```{r,eval=T}
 class(welfare$sex)
 table(welfare$sex)
 
@@ -85,7 +87,7 @@ qplot(welfare$income)
 ```
 #### 2. 전처리
 
-```{r,eval=F}
+```{r,eval=T}
 
 summary(welfare$income)
 welfare$income <- ifelse(welfare$income %in% c(0,9999), NA, welfare$income)
